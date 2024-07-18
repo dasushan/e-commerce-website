@@ -1,8 +1,8 @@
 import './ProductItem.css'
 const ProductItem = (props) => {
     return(
-        <div className='col-6 '>
-            <div className='product__card'>
+        <div className='col-6 product__card'>
+            <div >
                 <div>{props.title}</div>
                 <picture>
                     <img src={props.img_url}/>

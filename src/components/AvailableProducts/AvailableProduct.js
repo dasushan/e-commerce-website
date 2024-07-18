@@ -44,9 +44,12 @@ const AvailableProduct = () => {
   return (
     <>
       <div className="music">MUSIC</div>
-      <div className="row">
+      <div className='container product__list'>
+      <div className="row main__list">
         {productsList}
       </div>
+      </div>
+      
     </>
   );
 };
