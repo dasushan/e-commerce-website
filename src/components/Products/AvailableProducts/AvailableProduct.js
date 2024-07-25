@@ -1,5 +1,6 @@
 import ProductItem from '../ProductItem/ProductItem';
 import './AvailableProduct.css';
+import { v4 as uuidv4 } from 'uuid';
 const AvailableProduct = () => {
   const productsArr = [
     {
@@ -9,6 +10,8 @@ const AvailableProduct = () => {
 
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+
+      id: uuidv4(),
     },
 
     {
@@ -18,6 +21,8 @@ const AvailableProduct = () => {
 
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+
+      id: uuidv4(),
     },
 
     {
@@ -27,6 +32,8 @@ const AvailableProduct = () => {
 
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+
+      id: uuidv4(),
     },
 
     {
@@ -36,6 +43,8 @@ const AvailableProduct = () => {
 
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
+
+      id: uuidv4(),
     },
   ];
   const productsList = productsArr.map((product) => {
@@ -44,6 +53,8 @@ const AvailableProduct = () => {
         price={product.price}
         title={product.title}
         img_url={product.imageUrl}
+        id={product.id}
+        key={product.id}
       />
     );
   });

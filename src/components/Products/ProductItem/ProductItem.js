@@ -1,5 +1,16 @@
 import './ProductItem.css';
+import { useContext } from 'react';
+import CartContext from '../../../store/cart-context';
 const ProductItem = (props) => {
+
+  const cartCtx = useContext(CartContext);
+
+  const buyItemHandler = () => {
+    console.log(props)
+    
+    cartCtx.addItem({...props, quantity: 1} );
+  };
+
   return (
     <div className="col-lg-6 p-1 align-items-center mr-4">
       <div className="card border-0">
@@ -14,7 +25,9 @@ const ProductItem = (props) => {
             <div className="fs-5 fw-semibold text-bg-warning">
               ${props.price}
             </div>
-            <div className="btn bg-primary text-white">Buy Now</div>
+            <div className="btn bg-primary text-white" onClick={buyItemHandler}>
+              Buy Now
+            </div>
           </div>
         </div>
       </div>

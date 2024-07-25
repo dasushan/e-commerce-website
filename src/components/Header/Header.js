@@ -1,5 +1,12 @@
 import './Header.css';
+import {useContext} from 'react'
+import CartContext from '../../store/cart-context';
 const Header = (props) => {
+  const cartCtx = useContext(CartContext);
+  let quantity = 0;
+  cartCtx.items.forEach((item) => {
+    quantity = quantity + item.quantity
+  })
   return (
     <>
       <div className="container text-center">
@@ -10,7 +17,9 @@ const Header = (props) => {
         </div>
         <div className="row">
           <div className="col">
-            <button onClick={props.onShowCart}>cart</button>
+            <button onClick={props.onShowCart}>cart
+              <span>{quantity}</span>
+            </button>
           </div>
         </div>
       </div>
