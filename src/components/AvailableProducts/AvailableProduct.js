@@ -39,17 +39,70 @@ const AvailableProduct = () => {
     },
   ];
   const productsList = productsArr.map((product) => {
-    return <ProductItem price={product.price} title={product.title} img_url={product.imageUrl}/>
-  })
+    return (
+      <ProductItem
+        price={product.price}
+        title={product.title}
+        img_url={product.imageUrl}
+      />
+    );
+  });
   return (
     <>
       <div className="music">MUSIC</div>
-      <div className='container product__list'>
-      <div className="row main__list">
-        {productsList}
+      <div className="container-lg  mt-4 bg-light">
+        <div className=" row-cols-2 row g-6   align-items-center justify-content-center">
+          {productsList}
+        </div>
       </div>
-      </div>
-      
+
+      {/* pricing plans */}
+      {/* <section id="pricing" className="bg-light mt-5">
+        <div className="container-lg">
+          <div className="text-center">
+            <h2>Pricing Plans</h2>
+            <p className="lead text-muted">Choose a pricing plan to suit you</p>
+          </div>
+          <div className="row my-5 align-items-center justify-content-center g-0">
+            <div className="col-8 col-lg-4 col-xl-3">
+              <div className="card border-0">
+                <div className="card-body text-center py-4">
+                  <h4 className="card-title">Starter Edition</h4>
+                  <p className="lead card-subtitle">eBook download only</p>
+                  <p className="display-5 my-4 text-primary fw-bold">$12.59</p>
+                  <p className="card-text mx-5 text-muted d-none d-lg-block">
+                    Lorem ipsum dolor, sit amet consecutor adipisicing elit
+                  </p>
+                  <a href="#" className="btn btn-outline-primary btn-lg mt-3">
+                    Buy Now
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-9 col-lg-4">
+              <div className="card border-primary border-2">
+                <div className="card-header text-center text-primary">
+                  Most Popular
+                </div>
+                <div className="card-body text-center py-5">
+                  <h4 className="card-title">Complete Edition</h4>
+                  <p className="lead card-subtitle">
+                    eBook download & all updates
+                  </p>
+                  <p className="display-4 my-4 text-primary fw-bold">$18.99</p>
+                  <p className="card-text mx-5 text-muted d-none d-lg-block">
+                    Lorem ipsum dolor, sit amet consecutor adipisicing elit
+                  </p>
+                  <a href="#" className="btn btn-outline-primary btn-lg mt-3">
+                    Buy Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
     </>
   );
 };

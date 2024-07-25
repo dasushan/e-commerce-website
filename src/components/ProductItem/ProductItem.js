@@ -1,19 +1,25 @@
-import './ProductItem.css'
+import './ProductItem.css';
 const ProductItem = (props) => {
-    return(
-        <div className='col-6 product__card'>
-            <div >
-                <div>{props.title}</div>
-                <picture>
-                    <img src={props.img_url}/>
-                </picture>
-                <div>
-                    <div>{props.price}</div>
-                    <button>Add to Cart</button>
-                </div>
+  return (
+    <div className="col-lg-6 p-1 align-items-center mr-4">
+      <div className="card border-0">
+        <div className="card-body text-center py-4">
+          <div className="card-title text-dark fw-semibold fs-5">
+            {props.title}
+          </div>
+          <picture>
+            <img src={props.img_url} alt="" style={{}} />
+          </picture>
+          <div className="d-flex mt-2 p-2 justify-content-around align-items-center">
+            <div className="fs-5 fw-semibold text-bg-warning">
+              ${props.price}
             </div>
+            <div className="btn bg-primary text-white">Buy Now</div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default ProductItem;
