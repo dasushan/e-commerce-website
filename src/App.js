@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Header from './components/Header/Header';
 import AvailableProduct from './components/Products/AvailableProducts/AvailableProduct';
 import Cart from './components/Cart/Cart';
-
+import Footer from './components/Footer/Footer';
 import CartProvider from './store/CartProvider';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
       <AvailableProduct />
 
       {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Footer />
     </CartProvider>
   );
 }
