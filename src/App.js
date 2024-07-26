@@ -1,11 +1,13 @@
 import './App.css';
 import React from 'react';
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import AvailableProduct from './components/Products/AvailableProducts/AvailableProduct';
 import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import CartProvider from './store/CartProvider';
+import About from './pages/About';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -17,13 +19,19 @@ function App() {
     setCartIsShown(true);
   };
   return (
-    <CartProvider>
-      <Header onShowCart={showCartHandler} />
-      <AvailableProduct />
+    <BrowserRouter>
+      <CartProvider>
+        <Header onShowCart={showCartHandler} />
+        <Routes>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/store' element={<AvailableProduct/>}/>
+        </Routes>
+        
 
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Footer />
-    </CartProvider>
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+        <Footer />
+      </CartProvider>
+    </BrowserRouter>
   );
 }
 
