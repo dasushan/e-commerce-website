@@ -1,7 +1,7 @@
 const Footer = () => {
     return(
         <>
-        <div className="container-lg bg-info">
+        <div className="container-lg bg-info mt-auto">
             <div className="row d-flex ">
                 <div className="col-md-8 p-4 display-6 fw-semibold text-center">
                     The Generics

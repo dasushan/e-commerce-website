@@ -1,7 +1,12 @@
 const About = () => {
     return(
         <>
-            Hello this the about page
+        <div className="container-lg">
+        <div className="d-flex flex-column min-vh-100">
+                This is about page
+            </div>
+        </div>
+            
         </>
 
     )

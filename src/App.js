@@ -8,6 +8,7 @@ import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import CartProvider from './store/CartProvider';
 import About from './pages/About';
+import Home from './pages/Home';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path='/about' element={<About/>}/>
           <Route path='/store' element={<AvailableProduct/>}/>
+          <Route path='/home' element={<Home/>}/>
         </Routes>
         
 
