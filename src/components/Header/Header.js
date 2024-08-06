@@ -36,6 +36,14 @@ const Header = (props) => {
               About
             </NavLink>
           </div>
+          <div className="col">
+            <NavLink
+              to="/contact-us"
+              className={({ isActive }) => (isActive ? 'active' : undefined)}
+            >
+              Contact Us
+            </NavLink>
+          </div>
         </div>
         <div className="row">
           <div className="col">

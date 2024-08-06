@@ -7,7 +7,7 @@ const Home = () => {
       <div className="container-lg d-flex justify-content-center p-4 bg-secondary mb-4">
         <div className="fs-5 text-white border border-white px-3 py-2">Get our Latest Album</div>
       </div>
-      <div className="container-lg">
+      <div className="container-lg min-vh-100">
         <ul className="list-group list-group-flush">
             <li className="list-group-item d-flex justify-content-around align-items-center mb-2 border-2 border-bottom border-dark">
                 <div>JUL16</div>
