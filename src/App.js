@@ -10,6 +10,7 @@ import CartProvider from './store/CartProvider';
 import About from './pages/About';
 import Home from './pages/Home';
 import Contact from './pages/ContactUs';
+import ProductDetail from './pages/ProductDetail';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <Route path='/store' element={<AvailableProduct/>}/>
           <Route path='/home' element={<Home/>}/>
           <Route path='/contact-us' element={<Contact/>}/>
+          <Route path='productdetail/:productid' element={<ProductDetail/>}/>
         </Routes>
         
 

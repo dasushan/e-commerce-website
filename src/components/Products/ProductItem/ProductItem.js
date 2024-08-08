@@ -1,5 +1,6 @@
 import './ProductItem.css';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import CartContext from '../../../store/cart-context';
 const ProductItem = (props) => {
 
@@ -16,7 +17,7 @@ const ProductItem = (props) => {
       <div className="card border-0">
         <div className="card-body text-center py-4">
           <div className="card-title text-dark fw-semibold fs-5">
-            {props.title}
+            <Link className='text-dark text-decoration-none' to={`/productdetail/${props.id}`}>{props.title}</Link>
           </div>
           <picture>
             <img src={props.img_url} alt="" style={{}} />
