@@ -28,7 +28,8 @@ const Contact = () => {
           console.log(data);
     }
     return(
-        <form onSubmit={submitHandler} className='d-flex  align-items-center justify-content-around '>
+        <section className='contact'>
+            <form onSubmit={submitHandler} >
             <div className='control'>
                 <label htmlFor='name'>Name</label>
                 <input type='text' id='name' ref={nameRef}></input>
@@ -43,6 +44,8 @@ const Contact = () => {
             </div>
             <button className='control-btn'>Submit</button>
         </form>
+        </section>
+        
     )
 }
 
