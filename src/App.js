@@ -11,6 +11,8 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Contact from './pages/ContactUs';
 import ProductDetail from './pages/ProductDetail';
+import AuthPage from './pages/AuthPage';
+import Product from './pages/Product';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -23,19 +25,21 @@ function App() {
   };
   return (
     <BrowserRouter>
+    
       <CartProvider>
         <Header onShowCart={showCartHandler} />
         <Routes>
           <Route path='/about' element={<About/>}/>
-          <Route path='/store' element={<AvailableProduct/>}/>
+          <Route path='/store' element={<Product/>}/>
           <Route path='/home' element={<Home/>}/>
           <Route path='/contact-us' element={<Contact/>}/>
           <Route path='productdetail/:productid' element={<ProductDetail/>}/>
+         
         </Routes>
         
 
         {cartIsShown && <Cart onClose={hideCartHandler} />}
-        <Footer />
+        
       </CartProvider>
     </BrowserRouter>
   );

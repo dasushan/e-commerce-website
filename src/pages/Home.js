@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 const Home = () => {
   return (
     <>
@@ -18,7 +19,7 @@ const Home = () => {
             <li className="list-group-item d-flex justify-content-around align-items-center mb-2 border-2 border-bottom border-dark">
                 <div>JUL17</div>
                 <div>TORONTO, ON   </div>
-                <div>   BUDWISER STAGE    </div>
+                <div>BUDWISER STAGE    </div>
                 <div className="btn btn-info text-white fw-bolder">BUY TICKETS</div>
             </li>
             <li className="list-group-item d-flex justify-content-around align-items-center mb-2 border-2 border-bottom border-dark">
@@ -41,6 +42,7 @@ const Home = () => {
             </li>
         </ul>
       </div>
+      <Footer />
     </>
   );
 };

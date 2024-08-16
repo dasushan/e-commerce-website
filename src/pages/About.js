@@ -1,3 +1,5 @@
+import Footer from "../components/Footer/Footer"
+
 const About = () => {
     return(
         <>
@@ -6,7 +8,7 @@ const About = () => {
                 This is about page
             </div>
         </div>
-            
+        <Footer />
         </>
 
     )

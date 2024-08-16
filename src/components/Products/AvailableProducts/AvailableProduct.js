@@ -18,7 +18,7 @@ const AvailableProduct = () => {
   return (
     <>
       <div className="music">MUSIC</div>
-      <div className="container-lg  mt-4 bg-light">
+      <div className="container-lg  mt-4 bg-light min-vh-100">
         <div className=" row-cols-2 row g-6   align-items-center justify-content-center">
           {productsList}
         </div>
