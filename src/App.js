@@ -13,6 +13,7 @@ import Contact from './pages/ContactUs';
 import ProductDetail from './pages/ProductDetail';
 import AuthPage from './pages/AuthPage';
 import Product from './pages/Product';
+import { AuthContextProvider } from './store/auth-context';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -25,21 +26,23 @@ function App() {
   };
   return (
     <BrowserRouter>
-    
       <CartProvider>
-        <Header onShowCart={showCartHandler} />
-        <Routes>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/store' element={<Product/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/contact-us' element={<Contact/>}/>
-          <Route path='productdetail/:productid' element={<ProductDetail/>}/>
-         
-        </Routes>
-        
+        <AuthContextProvider>
+          <Header onShowCart={showCartHandler} />
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/store" element={<Product />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route
+              path="productdetail/:productid"
+              element={<ProductDetail />}
+            />
+            <Route path="/login" element={<AuthPage />} />
+          </Routes>
 
-        {cartIsShown && <Cart onClose={hideCartHandler} />}
-        
+          {cartIsShown && <Cart onClose={hideCartHandler} />}
+        </AuthContextProvider>
       </CartProvider>
     </BrowserRouter>
   );
