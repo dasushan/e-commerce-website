@@ -46,14 +46,14 @@ const Header = (props) => {
             </NavLink>
           </div>
 
-          <div className="col">
+          {isLoggedIn && <div className="col">
             <NavLink
               to="/contact-us"
               className={({ isActive }) => (isActive ? 'active' : undefined)}
             >
               Contact Us
             </NavLink>
-          </div>
+          </div>}
           {!isLoggedIn && (
             <div className="col">
               <NavLink
