@@ -2,7 +2,7 @@ import './Header.css';
 import { useContext } from 'react';
 import CartContext from '../../store/cart-context';
 import AuthContext from '../../store/auth-context';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 const Header = (props) => {
   const cartCtx = useContext(CartContext);
   let quantity = 0;
@@ -12,6 +12,9 @@ const Header = (props) => {
 
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="container text-center">
@@ -24,14 +27,16 @@ const Header = (props) => {
               Home
             </NavLink>
           </div>
-          {isLoggedIn && <div className="col ">
-            <NavLink
-              to="/store"
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-            >
-              Store
-            </NavLink>
-          </div>}
+          {isLoggedIn && (
+            <div className="col ">
+              <NavLink
+                to="/store"
+                className={({ isActive }) => (isActive ? 'active' : undefined)}
+              >
+                Store
+              </NavLink>
+            </div>
+          )}
           <div className="col">
             <NavLink
               to="/about"
@@ -40,14 +45,7 @@ const Header = (props) => {
               About
             </NavLink>
           </div>
-          {!isLoggedIn && <div className="col">
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? 'active' : undefined)}
-            >
-              Login
-            </NavLink>
-          </div>}
+
           <div className="col">
             <NavLink
               to="/contact-us"
@@ -56,15 +54,39 @@ const Header = (props) => {
               Contact Us
             </NavLink>
           </div>
+          {!isLoggedIn && (
+            <div className="col">
+              <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? 'active' : undefined)}
+              >
+                Login
+              </NavLink>
+            </div>
+          )}
+          {isLoggedIn && (
+            <div className="col">
+              <button
+                onClick={() => {
+                  authCtx.logout();
+                  navigate('/login',{replace: true})
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
-        {isLoggedIn && <div className="row">
-          <div className="col">
-            <button onClick={props.onShowCart}>
-              cart
-              <span>{quantity}</span>
-            </button>
+        {isLoggedIn && (
+          <div className="row">
+            <div className="col">
+              <button onClick={props.onShowCart}>
+                cart
+                <span>{quantity}</span>
+              </button>
+            </div>
           </div>
-        </div>}
+        )}
       </div>
       <div className="container headline"> The Generics</div>
     </>
