@@ -3,21 +3,28 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartContext from '../../../store/cart-context';
 const ProductItem = (props) => {
-
   const cartCtx = useContext(CartContext);
 
   const buyItemHandler = () => {
-    console.log(props)
+    console.log(props);
+
+    cartCtx.addItem({ ...props, quantity: 1 });
     
-    cartCtx.addItem({...props, quantity: 1} );
   };
+
+  
 
   return (
     <div className="col-lg-6 p-1 align-items-center mr-4">
       <div className="card border-0">
         <div className="card-body text-center py-4">
           <div className="card-title text-dark fw-semibold fs-5">
-            <Link className='text-dark text-decoration-none' to={`/productdetail/${props.id}`}>{props.title}</Link>
+            <Link
+              className="text-dark text-decoration-none"
+              to={`/productdetail/${props.id}`}
+            >
+              {props.title}
+            </Link>
           </div>
           <picture>
             <img src={props.img_url} alt="" style={{}} />
