@@ -14,7 +14,7 @@ const Header = (props) => {
   const isLoggedIn = authCtx.isLoggedIn;
 
   const navigate = useNavigate();
-
+  
   return (
     <>
       <div className="container text-center">

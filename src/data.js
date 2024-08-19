@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+
 const data = {
   productsArr: [
     {
@@ -9,7 +9,7 @@ const data = {
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
 
-      id: uuidv4(),
+      id: 111-100-2411-201,
     },
 
     {
@@ -20,7 +20,7 @@ const data = {
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
 
-      id: uuidv4(),
+      id: 222-50-2411-202,
     },
 
     {
@@ -31,7 +31,7 @@ const data = {
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
 
-      id: uuidv4(),
+      id: 333-70-2411-203,
     },
 
     {
@@ -42,7 +42,7 @@ const data = {
       imageUrl:
         'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
 
-      id: uuidv4(),
+      id: 444-100-2411-204,
     },
   ],
 };

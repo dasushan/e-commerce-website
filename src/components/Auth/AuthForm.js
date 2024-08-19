@@ -41,7 +41,7 @@ const AuthForm = () => {
                 if(res.ok){
                     return res.json().then((data) => {
                         console.log(data)
-                        authCtx.login(data.idToken)
+                        authCtx.login(data)
                         navigate('/store', {replace : true})
                     })
                 }else{
@@ -72,7 +72,7 @@ const AuthForm = () => {
 
                     // ...
                     return res.json().then( data => {
-                        authCtx.login(data.idToken);
+                        authCtx.login(data);
                         navigate('/store', {replace: true})
                     })
                 } else{

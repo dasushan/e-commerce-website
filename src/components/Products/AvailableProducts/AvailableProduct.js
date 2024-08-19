@@ -1,9 +1,35 @@
 import data from '../../../data';
 import ProductItem from '../ProductItem/ProductItem';
 import './AvailableProduct.css';
+import { useContext, useEffect } from 'react';
+import AuthContext from '../../../store/auth-context';
+import CartContext from '../../../store/cart-context';
 
 const AvailableProduct = () => {
-  
+  const authCtx = useContext(AuthContext);
+  const email = authCtx.emailId;
+  const username = email.replace(/[@ .]/g, '');
+  const cartCtx = useContext(CartContext);
+
+  useEffect(() => {
+    fetch(
+      `https://crudcrud.com/api/ebfc2a1587ab4ffc8c34d27985b2ae34/cart${username}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    ).then(async (response) => {
+      const result = await response.json();
+      console.log(result);
+      if (response.ok && result.length>0) {
+        //cartCtx.addItem()
+        cartCtx.loadItems(result);
+      }
+    });
+  }, []);
+console.log('availabe product')
   const productsList = data.productsArr.map((product) => {
     return (
       <ProductItem

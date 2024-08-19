@@ -13,7 +13,7 @@ import Contact from './pages/ContactUs';
 import ProductDetail from './pages/ProductDetail';
 import AuthPage from './pages/AuthPage';
 import Product from './pages/Product';
-import { AuthContextProvider } from './store/auth-context';
+
 import AuthContext from './store/auth-context';
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
   };
 
   const authCtx = useContext(AuthContext)
-  const isLoggedIn = authCtx.isLoggedIn;
-  console.log(isLoggedIn);
+  //const isLoggedIn = authCtx.isLoggedIn;
+  
 
   
 
