@@ -13,7 +13,7 @@ const AvailableProduct = () => {
 
   useEffect(() => {
     fetch(
-      `https://crudcrud.com/api/ebfc2a1587ab4ffc8c34d27985b2ae34/cart${username}`,
+      `https://react-backend-app-f330f-default-rtdb.asia-southeast1.firebasedatabase.app/cart${username}.json`,
       {
         method: 'GET',
         headers: {
@@ -21,12 +21,25 @@ const AvailableProduct = () => {
         },
       }
     ).then(async (response) => {
-      const result = await response.json();
-      console.log(result);
-      if (response.ok && result.length>0) {
-        //cartCtx.addItem()
-        cartCtx.loadItems(result);
+      try{
+        const result = await response.json();
+        console.log(result);
+        const resArr = [];
+        Object.keys(result).forEach((key) => {
+          const value = result[key];
+          resArr.push(value);
+        });
+        console.log(resArr);
+        if (response.ok && resArr.length>0) {
+          //cartCtx.addItem()
+          cartCtx.loadItems(resArr);
+        }
       }
+      catch(err){
+        console.log(err)
+      }
+      
+      
     });
   }, []);
 console.log('availabe product')

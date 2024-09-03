@@ -30,7 +30,7 @@ const CartProvider = (props) => {
       updateItems(updatedItems);
 
       fetch(
-        `https://crudcrud.com/api/ebfc2a1587ab4ffc8c34d27985b2ae34/cart${username}`,
+        `https://react-backend-app-f330f-default-rtdb.asia-southeast1.firebasedatabase.app/cart${username}.json`,
         {
           method: 'GET',
           headers: {
@@ -40,11 +40,23 @@ const CartProvider = (props) => {
       ).then(async (response) => {
         const result = await response.json();
         console.log(result);
-        const existingItemArr = result.filter((itemz) => {
-          return itemz.id === item.id;
-        });
+        let resArr = [];
+        let entry = 0;
+        let existingItem = 0;
+        Object.keys(result).forEach((key) => {
+          let value = result[key];
+          if(value.id === item.id){
+            entry = key;
+            existingItem = value;
+          }
+          resArr.push(value);
+        })
 
-        const existingItem = existingItemArr[0];
+        // const existingItemArr = resArr.filter((itemz) => {
+        //   return itemz.id === item.id;
+        // });
+
+        // const existingItem = existingItemArr[0];
 
         console.log(existingItem);
 
@@ -56,7 +68,7 @@ const CartProvider = (props) => {
           quantity: existingItem.quantity + item.quantity
         };
         fetch(
-          `https://crudcrud.com/api/ebfc2a1587ab4ffc8c34d27985b2ae34/cart${username}/${existingItem._id}`,
+          `https://react-backend-app-f330f-default-rtdb.asia-southeast1.firebasedatabase.app/cart${username}/${entry}.json`,
           {
             method: 'PUT',
             headers: {
@@ -72,7 +84,7 @@ const CartProvider = (props) => {
       });
 
       fetch(
-        `https://crudcrud.com/api/ebfc2a1587ab4ffc8c34d27985b2ae34/cart${username}`,
+        `https://react-backend-app-f330f-default-rtdb.asia-southeast1.firebasedatabase.app/cart${username}.json`,
         {
           method: 'POST',
           body: JSON.stringify(item),
