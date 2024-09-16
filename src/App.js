@@ -15,7 +15,10 @@ import ProductDetail from './pages/ProductDetail';
 import AuthPage from './pages/AuthPage';
 import Product from './pages/Product';
 
-import AuthContext from './store/auth-context';
+//import AuthContext from './store/auth-context';
+
+import { useSelector } from 'react-redux';
+import { getLogInStatus } from './store/authSlice';
 
 const Home = lazy(() => import('./pages/Home'))
 
@@ -29,12 +32,12 @@ function App() {
     setCartIsShown(true);
   };
 
-  const authCtx = useContext(AuthContext)
+  //const authCtx = useContext(AuthContext)
   //const isLoggedIn = authCtx.isLoggedIn;
   
-
+  const isLoggedIn = useSelector(getLogInStatus)
   
-
+  console.log(isLoggedIn)
   return (
     <BrowserRouter>
       <CartProvider>
@@ -42,14 +45,14 @@ function App() {
           <Header onShowCart={showCartHandler} />
           <Routes>
             <Route path="/about" element={<About />} />
-            <Route path="/store" element={ authCtx.isLoggedIn ? <Product /> : <Navigate to='/login' replace={true}/>} />
+            <Route path="/store" element={ isLoggedIn ? <Product /> : <Navigate to='/login' replace={true}/>} />
             <Route path="/home" element={<Suspense fallback={<p>Loading...</p>}><Home /></Suspense>} />
             <Route path="/contact-us" element={<Contact />} />
             <Route
               path="productdetail/:productid"
               element={<ProductDetail />}
             />
-            <Route path="/login" element={!authCtx.isLoggedIn && <AuthPage />} />
+            <Route path="/login" element={!isLoggedIn && <AuthPage />} />
             {/* <Route path='*' element={<Navigate to='/home' replace={true}/>}/> */}
           </Routes>
 

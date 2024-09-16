@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { AuthContextProvider } from './store/auth-context';
 
+
+import { Provider } from 'react-redux';
+import { store } from './store';
+import { getAuthStatus } from './store/authSlice';
+
+store.dispatch(getAuthStatus());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <AuthContextProvider>
-    <App />
-  </AuthContextProvider>
-    
-  
-);
 
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

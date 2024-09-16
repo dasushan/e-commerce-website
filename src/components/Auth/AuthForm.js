@@ -1,9 +1,13 @@
 import {useRef, useState, useContext} from 'react';
 import { useNavigate } from 'react-router-dom'
-import AuthContext from '../../store/auth-context';
+
 import classes from './AuthForm.module.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from '../../store/authSlice';
 const AuthForm = () => {
-    const authCtx = useContext(AuthContext);
+    const dispatch = useDispatch();
+
+    
 
     const navigate = useNavigate();
 
@@ -41,7 +45,8 @@ const AuthForm = () => {
                 if(res.ok){
                     return res.json().then((data) => {
                         console.log(data)
-                        authCtx.login(data)
+                        
+                        dispatch(login(data))
                         navigate('/store', {replace : true})
                     })
                 }else{
@@ -72,7 +77,8 @@ const AuthForm = () => {
 
                     // ...
                     return res.json().then( data => {
-                        authCtx.login(data);
+                        
+                        dispatch(login(data))
                         navigate('/store', {replace: true})
                     })
                 } else{

@@ -1,17 +1,23 @@
 import './Header.css';
 import { useContext } from 'react';
 import CartContext from '../../store/cart-context';
-import AuthContext from '../../store/auth-context';
+
 import { NavLink, useNavigate } from 'react-router-dom';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../store/authSlice';
+import { getLogInStatus } from '../../store/authSlice';
+
 const Header = (props) => {
+
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(getLogInStatus)
   const cartCtx = useContext(CartContext);
+
   let quantity = 0;
   cartCtx.items.forEach((item) => {
     quantity = quantity + item.quantity;
   });
-
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn;
 
   const navigate = useNavigate();
   
@@ -68,7 +74,7 @@ const Header = (props) => {
             <div className="col">
               <button
                 onClick={() => {
-                  authCtx.logout();
+                  dispatch(logout());
                   navigate('/login',{replace: true})
                 }}
               >
